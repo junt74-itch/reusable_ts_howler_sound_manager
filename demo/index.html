@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SoundManager Demo</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, sans-serif;
+      }
+
+      body {
+        margin: 0 auto;
+        max-width: 960px;
+        padding: 1.5rem;
+      }
+
+      h1,
+      h2 {
+        margin-top: 1.5rem;
+      }
+
+      section {
+        border: 1px solid #8884;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        padding: 1rem;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+
+      button {
+        cursor: pointer;
+        padding: 0.4rem 0.75rem;
+      }
+
+      label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      input[type="range"] {
+        width: 160px;
+      }
+
+      #status {
+        padding: 0.75rem;
+        border-radius: 6px;
+        background: #8882;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SoundManager Demo</h1>
+    <p>
+      最初のボタン操作で <code>Initialize</code> と
+      <code>UnlockAudio</code> を実行します。
+    </p>
+
+    <section>
+      <h2>セットアップ</h2>
+      <div class="row">
+        <button id="btn-init" type="button">Initialize + UnlockAudio</button>
+        <button id="btn-load-common" type="button" disabled>
+          LoadCatalog + Preload common
+        </button>
+        <button id="btn-load-forest" type="button" disabled>
+          Preload forest
+        </button>
+        <button id="btn-unload-forest" type="button" disabled>
+          UnloadGroup forest
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h2>再生</h2>
+      <div class="row">
+        <button id="btn-play-bgm" type="button" disabled>Play BGM</button>
+        <button id="btn-stop-bgm" type="button" disabled>Stop BGM</button>
+        <button id="btn-play-bgs" type="button" disabled>Play BGS ch0</button>
+        <button id="btn-stop-bgs" type="button" disabled>Stop BGS ch0</button>
+        <button id="btn-play-me" type="button" disabled>Play ME</button>
+        <button id="btn-stop-me" type="button" disabled>Stop ME</button>
+        <button id="btn-play-se" type="button" disabled>Play SE</button>
+        <button id="btn-play-system-se" type="button" disabled>
+          Play SYSTEM SE
+        </button>
+        <button id="btn-stop-all-se" type="button" disabled>StopAllSE</button>
+        <button id="btn-stop-all" type="button" disabled>StopAll</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>ミキサー</h2>
+      <div class="row">
+        <label>
+          Master
+          <input id="master-volume" type="range" min="0" max="100" value="100" />
+          <span id="master-volume-label">1.00</span>
+        </label>
+        <label>
+          <input id="master-mute" type="checkbox" />
+          Master mute
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          BGM
+          <input id="bgm-volume" type="range" min="0" max="100" value="100" />
+        </label>
+        <label>
+          <input id="bgm-mute" type="checkbox" />
+          BGM mute
+        </label>
+        <label>
+          BGS
+          <input id="bgs-volume" type="range" min="0" max="100" value="100" />
+        </label>
+        <label>
+          <input id="bgs-mute" type="checkbox" />
+          BGS mute
+        </label>
+        <label>
+          ME
+          <input id="me-volume" type="range" min="0" max="100" value="100" />
+        </label>
+        <label>
+          <input id="me-mute" type="checkbox" />
+          ME mute
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          SE
+          <input id="se-volume" type="range" min="0" max="100" value="100" />
+        </label>
+        <label>
+          <input id="se-mute" type="checkbox" />
+          SE mute
+        </label>
+        <label>
+          SYSTEM SE
+          <input id="system-se-volume" type="range" min="0" max="100" value="100" />
+        </label>
+        <label>
+          <input id="system-se-mute" type="checkbox" />
+          SYSTEM SE mute
+        </label>
+      </div>
+    </section>
+
+    <section>
+      <h2>状態</h2>
+      <div id="status">未初期化</div>
+    </section>
+
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

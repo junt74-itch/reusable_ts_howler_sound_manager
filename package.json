@@ -1,0 +1,33 @@
+{
+  "name": "reusable_ts_howler_sound_manager",
+  "version": "0.0.0",
+  "description": "TypeScript HTML5 game sound manager built on Howler.js (RMMZ-style)",
+  "type": "module",
+  "packageManager": "bun@1.3.3",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "generate-demo-audio": "bun run scripts/generate-demo-audio.ts",
+    "demo": "vite --config demo/vite.config.ts"
+  },
+  "dependencies": {
+    "howler": "^2.2.4"
+  },
+  "devDependencies": {
+    "@types/howler": "^2.2.13",
+    "typescript": "^5.8.3",
+    "vite": "^8.2.2",
+    "vitest": "^3.2.4"
+  }
+}
